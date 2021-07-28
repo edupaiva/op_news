@@ -31,7 +31,7 @@ class TypenewsController extends Controller
 
             return response()->json([
                 'data' =>[
-                    'msg' => 'Noticia cadastrada com sucesso!'
+                    'msg' => 'Tipo de Noticia cadastrada com sucesso!'
                 ]
             ]);
         }catch(\Exception $e){
@@ -52,7 +52,7 @@ class TypenewsController extends Controller
     
                 return response()->json([
                     'data' =>[
-                        'msg' => 'Noticia atualizada com sucesso!'
+                        'msg' => 'Tipo de Noticia atualizada com sucesso!'
                     ]
                 ]);
             }catch(\Exception $e){
@@ -60,7 +60,7 @@ class TypenewsController extends Controller
             }
         }
 
-        //Metodo para deletar a noticia no banco
+        //Metodo para deletar tipo de noticia no banco
         public function destroy($id){
             
 
@@ -70,7 +70,7 @@ class TypenewsController extends Controller
     
                 return response()->json([
                     'data' =>[
-                        'msg' => 'Noticia Excluido com sucesso!'
+                        'msg' => 'Tipo de Noticia Excluido com sucesso!'
                     ]
                 ]);
             }catch(\Exception $e){
@@ -78,7 +78,7 @@ class TypenewsController extends Controller
             }
         }
 
-        //Metodo para exibir determinada noticia
+        //Metodo para exibir determinado tipo de noticia
         public function show($id){
             
 
@@ -88,7 +88,7 @@ class TypenewsController extends Controller
     
                 return response()->json([
                     'data' =>[
-                        'msg' => 'Noticia encontrada com sucesso!',
+                        'msg' => 'Tipo de Noticia encontrada com sucesso!',
                         'data' => $typenews,
                     ]
                 ]);
