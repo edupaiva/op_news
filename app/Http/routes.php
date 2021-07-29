@@ -13,11 +13,18 @@
 
 //Rotas para entidade user(Jornalista)
 Route::post('api/register', 'api\UserController@create');
-Route::post('api/login', 'api\UserController@login');
-Route::get('api/me/{$id}', 'api\UserController@show');
+Route::post('api/login', 'api\auth\LoginJwtController@login')->name('login');
 
-//Rotas para entidade News
-Route::resource('api/news', 'api\NewsController');
-    
-//Rotas para entidade TypeNews
-Route::resource('api/typenews', 'api\TypenewsController');
+Route::group(['middleware' => ['jwt.auth']], function () {
+
+    Route::post('api/me', 'api\UserController@show');
+    Route::get('api/logout', 'api\auth\LoginJwtController@logout')->name('logout');
+    Route::get('api/refresh', 'api\auth\LoginJwtController@refresh')->name('refresh');
+
+    //Rotas para entidade News
+    Route::resource('api/news', 'api\NewsController');
+        
+    //Rotas para entidade TypeNews
+    Route::resource('api/typenews', 'api\TypenewsController');
+
+});

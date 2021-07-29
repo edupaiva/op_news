@@ -58,12 +58,12 @@ class UserController extends Controller
     }
 
     //Metodo para exibir determinado usuário]
-    public function show($id){
+    public function show(){
             
 
         try{
-            $user = $this->user->find($id);
-            
+            //$user = $this->user->find($id);
+            $user = auth('api')->user();
 
             return response()->json([
                 'data' =>[

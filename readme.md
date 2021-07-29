@@ -1,27 +1,45 @@
-# Laravel PHP Framework
++--------+-----------+------------------------------+----------------------+----------------------------------------------------------+--------------+
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+| Domain | Method    | URI                          | Name                 | Action                                                   | Middleware   |
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
++--------+-----------+------------------------------+----------------------+----------------------------------------------------------+--------------+
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+|        | POST      | api/login                    | login                | App\Http\Controllers\api\auth\LoginJwtController@login   | web          |
 
-## Official Documentation
+|        | GET|HEAD  | api/logout                   | logout               | App\Http\Controllers\api\auth\LoginJwtController@logout  | web          |
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+|        | GET|HEAD  | api/me/{$id}                 |                      | App\Http\Controllers\api\UserController@show             | web,jwt.auth |
 
-## Contributing
+|        | POST      | api/news                     | api.news.store       | App\Http\Controllers\api\NewsController@store            | web,jwt.auth |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+|        | GET|HEAD  | api/news                     | api.news.index       | App\Http\Controllers\api\NewsController@index            | web,jwt.auth |
 
-## Security Vulnerabilities
+|        | GET|HEAD  | api/news/create              | api.news.create      | App\Http\Controllers\api\NewsController@create           | web,jwt.auth |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+|        | GET|HEAD  | api/news/{news}              | api.news.show        | App\Http\Controllers\api\NewsController@show             | web,jwt.auth |
 
-## License
+|        | PUT|PATCH | api/news/{news}              | api.news.update      | App\Http\Controllers\api\NewsController@update           | web,jwt.auth |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+|        | DELETE    | api/news/{news}              | api.news.destroy     | App\Http\Controllers\api\NewsController@destroy          | web,jwt.auth |
+
+|        | GET|HEAD  | api/news/{news}/edit         | api.news.edit        | App\Http\Controllers\api\NewsController@edit             | web,jwt.auth |
+
+|        | GET|HEAD  | api/refresh                  | refresh              | App\Http\Controllers\api\auth\LoginJwtController@refresh | web          |
+
+|        | POST      | api/register                 |                      | App\Http\Controllers\api\UserController@create           | web          |
+
+|        | POST      | api/typenews                 | api.typenews.store   | App\Http\Controllers\api\TypenewsController@store        | web,jwt.auth |
+
+|        | GET|HEAD  | api/typenews                 | api.typenews.index   | App\Http\Controllers\api\TypenewsController@index        | web,jwt.auth |
+
+|        | GET|HEAD  | api/typenews/create          | api.typenews.create  | App\Http\Controllers\api\TypenewsController@create       | web,jwt.auth |
+
+|        | DELETE    | api/typenews/{typenews}      | api.typenews.destroy | App\Http\Controllers\api\TypenewsController@destroy      | web,jwt.auth |
+
+|        | PUT|PATCH | api/typenews/{typenews}      | api.typenews.update  | App\Http\Controllers\api\TypenewsController@update       | web,jwt.auth |
+
+|        | GET|HEAD  | api/typenews/{typenews}      | api.typenews.show    | App\Http\Controllers\api\TypenewsController@show         | web,jwt.auth |
+
+|        | GET|HEAD  | api/typenews/{typenews}/edit | api.typenews.edit    | App\Http\Controllers\api\TypenewsController@edit         | web,jwt.auth |
+
++--------+-----------+------------------------------+----------------------+----------------------------------------------------------+--------------+

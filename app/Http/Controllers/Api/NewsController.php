@@ -18,7 +18,9 @@ class NewsController extends Controller
 
     //Metodo para exibir todas as noticias 
     public function index(){
-        $news = $this->news->all();
+        //$news = $this->news->all();
+        $news = auth('api')->user()->ownNews;
+
         return response()->json($news, 200);
     }
 
