@@ -19,14 +19,19 @@ class UserController extends Controller
     
     //Metodo para cadastrar usuarios
     public function create(Request $request){
-        $data = $request->all();
+        
+
 
         try{
-            $user = $this->user->create($data);
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+        
+        $user = $this->user->create($data);
 
-            return response()->json([
-                'data' =>[
-                    'msg' => 'Usuário cadastrado com sucesso!'
+           return response()->json([
+               'data' =>[
+                    'msg' => 'Usuário cadastrado com sucesso!',
+                    
                 ]
             ]);
         }catch(\Exception $e){
